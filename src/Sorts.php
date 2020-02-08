@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelJsonApiQueryParams;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class Sorts
 {
