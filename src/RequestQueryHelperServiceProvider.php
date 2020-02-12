@@ -10,7 +10,7 @@ class RequestQueryHelperServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/request-query-helper.php' => config_path('request-query-helper.php'),
+            __DIR__.'/../config/request-query-helper.php' => config_path('request-query-helper.php'),
         ], 'config');
 
         Request::macro('filters', function () {
@@ -33,7 +33,7 @@ class RequestQueryHelperServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/request-query-helper.php',
+            __DIR__.'/../config/request-query-helper.php',
             'query-params'
         );
     }
