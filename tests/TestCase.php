@@ -28,7 +28,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
                 'name' => 'page',
                 'number' => 'number',
                 'size' => 'size',
-            ]
+            ],
         ]);
     }
 }

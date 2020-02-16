@@ -11,7 +11,7 @@ class QueryParamBag
 {
     private $params = [];
 
-    /** @var Request $request*/
+    /** @var Request $request */
     private $request;
 
     /** @var string $field */
