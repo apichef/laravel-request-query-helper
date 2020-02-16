@@ -9,35 +9,17 @@
 
 # Easily interact with JSON-API query params.
 
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-build/
-docs/
-config/
-src/
-tests/
-vendor/
-```
-
-
 ## Install
 
 Via Composer
 
 ``` bash
-$ composer require milroyfraser/laravel-json-api-query-params
+$ composer require apichef/laravel-request-query-helper
 ```
 
 ## Usage
 
-``` php
-$skeleton = new LaravelJsonApiQueryParams();
-echo $skeleton->echoPhrase('Hello, League!');
-```
+- soon
 
 ## Change log
 
@@ -66,17 +48,17 @@ If you discover any security related issues, please email milroy@outlook.com ins
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/milroyfraser/laravel-json-api-query-params.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/apichef/laravel-request-query-helper.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/milroyfraser/laravel-json-api-query-params/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/milroyfraser/laravel-json-api-query-params.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/milroyfraser/laravel-json-api-query-params.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/milroyfraser/laravel-json-api-query-params.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/apichef/laravel-request-query-helper/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/apichef/laravel-request-query-helper.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/apichef/laravel-request-query-helper.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/apichef/laravel-request-query-helper.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/milroyfraser/laravel-json-api-query-params
-[link-travis]: https://travis-ci.org/milroyfraser/laravel-json-api-query-params
-[link-scrutinizer]: https://scrutinizer-ci.com/g/milroyfraser/laravel-json-api-query-params/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/milroyfraser/laravel-json-api-query-params
-[link-downloads]: https://packagist.org/packages/milroyfraser/laravel-json-api-query-params
+[link-packagist]: https://packagist.org/packages/apichef/laravel-request-query-helper
+[link-travis]: https://travis-ci.org/apichef/laravel-request-query-helper
+[link-scrutinizer]: https://scrutinizer-ci.com/g/apichef/laravel-request-query-helper/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/apichef/laravel-request-query-helper
+[link-downloads]: https://packagist.org/packages/apichef/laravel-request-query-helper
 [link-author]: https://github.com/milroyfraser
 [link-contributors]: ../../contributors
