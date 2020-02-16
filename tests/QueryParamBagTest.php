@@ -53,4 +53,13 @@ class QueryParamBagTest extends TestCase
         $this->assertFalse($filterParam->isEmpty('before'));
         $this->assertEquals($filterParam->get('before'), '21-02-2019');
     }
+
+    public function test_filled()
+    {
+        $request = Request::create('/url');
+        $this->assertFalse($request->filters()->filled());
+
+        $request = Request::create('/url?filter[foo]=bar');
+        $this->assertTrue($request->filters()->filled());
+    }
 }

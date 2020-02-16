@@ -28,6 +28,10 @@ class RequestQueryHelperServiceProvider extends ServiceProvider
         Request::macro('sorts', function () {
             return new Sorts($this);
         });
+
+        Request::macro('paginationParams', function () {
+            return new PaginationParams($this);
+        });
     }
 
     public function register(): void

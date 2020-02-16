@@ -29,4 +29,9 @@ class Fields
     {
         return $this->fields->get($resourceName, []);
     }
+
+    public function filled(): bool
+    {
+        return $this->fields->isNotEmpty();
+    }
 }

@@ -26,4 +26,13 @@ class SortsTest extends TestCase
             }
         });
     }
+
+    public function test_filled()
+    {
+        $request = Request::create('/url');
+        $this->assertFalse($request->sorts()->filled());
+
+        $request = Request::create('/url?sort=-created_at');
+        $this->assertTrue($request->sorts()->filled());
+    }
 }

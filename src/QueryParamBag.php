@@ -11,11 +11,25 @@ class QueryParamBag
 {
     private $params = [];
 
+    /** @var Request $request*/
+    private $request;
+
+    /** @var string $field */
+    private $field;
+
     public function __construct(Request $request, string $field)
     {
+        $this->request = $request;
+        $this->field = $field;
+
         if ($request->filled($field)) {
             $this->prepareParams($request->get($field));
         }
+    }
+
+    public function filled(): bool
+    {
+        return $this->request->filled($this->field);
     }
 
     public function has($field): bool

@@ -31,6 +31,11 @@ class Sorts
         });
     }
 
+    public function filled(): bool
+    {
+        return $this->fields->isNotEmpty();
+    }
+
     public function each(callable $callback)
     {
         $this->fields->each($callback);
