@@ -15,5 +15,5 @@ return [
         'number' => 'number',
 
         'size' => 'size',
-    ]
+    ],
 ];
