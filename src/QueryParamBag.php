@@ -11,10 +11,10 @@ class QueryParamBag
 {
     private $params = [];
 
-    /** @var Request $request */
+    /** @var Request */
     private $request;
 
-    /** @var string $field */
+    /** @var string */
     private $field;
 
     public function __construct(Request $request, string $field)

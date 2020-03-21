@@ -8,7 +8,7 @@ class PaginationParams
 {
     private $config;
 
-    /** @var Request $request */
+    /** @var Request */
     private $request;
 
     public function __construct(Request $request)

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Sorts
 {
-    /** @var Collection $fields */
+    /** @var Collection */
     private $fields;
 
     public function __construct(Request $request)
