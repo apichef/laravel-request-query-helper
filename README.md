@@ -17,6 +17,12 @@ Via Composer
 $ composer require apichef/laravel-request-query-helper
 ```
 
+You can publish the config file with:
+
+```bash
+$ php artisan vendor:publish --provider="ApiChef\RequestQueryHelper\RequestQueryHelperServiceProvider"
+```
+
 ## Usage
 
 - soon
