@@ -14,11 +14,11 @@ class RequestQueryHelperServiceProvider extends ServiceProvider
         ], 'config');
 
         Request::macro('filters', function () {
-            return new QueryParamBag($this, config('request-query-helper.filter'));
+            return new QueryParamBag($this, config('request-query-helper.filter.name'));
         });
 
         Request::macro('includes', function () {
-            return new QueryParamBag($this, config('request-query-helper.include'));
+            return new QueryParamBag($this, config('request-query-helper.include.name'));
         });
 
         Request::macro('fields', function () {

@@ -27,6 +27,21 @@ class SortsTest extends TestCase
         });
     }
 
+    public function test_can_pass_additional_parameters()
+    {
+        $request = Request::create('/url?sort=-created_at:2021-02-02|2021-02-10');
+
+        $sorts = $request->sorts();
+
+        $this->assertInstanceOf(Sorts::class, $sorts);
+
+        $sorts->each(function (SortField $sortField) {
+            $this->assertEquals('created_at', $sortField->getField());
+            $this->assertEquals('desc', $sortField->getDirection());
+            $this->assertEquals('2021-02-02|2021-02-10', $sortField->getParams());
+        });
+    }
+
     public function test_filled()
     {
         $request = Request::create('/url');

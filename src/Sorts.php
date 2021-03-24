@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ApiChef\RequestQueryHelper;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -15,11 +16,11 @@ class Sorts
 
     public function __construct(Request $request)
     {
-        $paramName = config('request-query-helper.sort');
-
+        $paramName = config('request-query-helper.sort.name');
+        $paramSeparator = config('request-query-helper.sort.param_separator');
         $params = $request->filled($paramName) ? explode(',', $request->get($paramName)) : [];
 
-        $this->fields = collect($params)->map(function ($field) {
+        $this->fields = collect($params)->map(function ($field) use ($paramSeparator) {
             $direction = SortField::DIRECTION_ASCENDING;
 
             if (Str::startsWith($field, '-')) {
@@ -27,7 +28,10 @@ class Sorts
                 $field = Str::after($field, '-');
             }
 
-            return new SortField($field, $direction);
+            $parts = explode($paramSeparator, $field);
+            $field = $parts[0];
+
+            return new SortField($field, $direction, Arr::get($parts, 1));
         });
     }
 

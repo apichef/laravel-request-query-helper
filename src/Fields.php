@@ -14,7 +14,7 @@ class Fields
 
     public function __construct(Request $request)
     {
-        $this->fields = collect($request->get(config('request-query-helper.fields'), []))
+        $this->fields = collect($request->get(config('request-query-helper.fields.name'), []))
             ->mapWithKeys(function ($value, $key) {
                 return [$key => explode(',', $value)];
             });
