@@ -15,10 +15,14 @@ class SortField
     /** @var string */
     private $direction;
 
-    public function __construct(string $field, string $direction)
+    /** @var string|null */
+    private $params;
+
+    public function __construct(string $field, string $direction, string $params = null)
     {
         $this->field = $field;
         $this->direction = $direction;
+        $this->params = $params;
     }
 
     public function getField(): string
@@ -29,5 +33,10 @@ class SortField
     public function getDirection(): string
     {
         return $this->direction;
+    }
+
+    public function getParams(): ?string
+    {
+        return $this->params;
     }
 }

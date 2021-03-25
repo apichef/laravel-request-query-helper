@@ -1,19 +1,31 @@
 <?php
 
 return [
-    'include' => 'include',
+    /* Configuration for inclusion of related resources */
+    'include' => [
+        'name' => 'include',
+    ],
 
-    'filter' => 'filter',
+    /* Configuration for filtering resource collections */
+    'filter' => [
+        'name' => 'filter',
+    ],
 
-    'sort' => 'sort',
+    /* Configuration for sorting resource collections */
+    'sort' => [
+        'name' => 'sort',
+        'param_separator' => '|'
+    ],
 
-    'fields' => 'fields',
+    /* Configuration for sparse field-sets */
+    'fields' => [
+        'name' => 'fields',
+    ],
 
+    /* Configuration for pagination */
     'pagination' => [
         'name' => 'page',
-
         'number' => 'number',
-
         'size' => 'size',
     ],
 ];
