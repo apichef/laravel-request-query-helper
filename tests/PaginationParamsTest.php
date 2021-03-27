@@ -22,4 +22,14 @@ class PaginationParamsTest extends TestCase
         $this->assertEquals(12, $request->paginationParams()->perPage());
         $this->assertEquals(2, $request->paginationParams()->page());
     }
+
+    public function test_default()
+    {
+        $request = Request::create('/url');
+
+        $this->assertEquals(null, $request->paginationParams()->perPage());
+        $this->assertEquals(10, $request->paginationParams()->perPage(10));
+        $this->assertEquals(null, $request->paginationParams()->page());
+        $this->assertEquals(1, $request->paginationParams()->page(1));
+    }
 }

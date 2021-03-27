@@ -17,9 +17,9 @@ class PaginationParams
         $this->request = $request;
     }
 
-    public function perPage(): ?int
+    public function perPage(int $default = null): ?int
     {
-        return (int) $this->request->input("{$this->config['name']}.{$this->config['size']}");
+        return (int) $this->request->input("{$this->config['name']}.{$this->config['size']}", $default);
     }
 
     public function pageName(): string
@@ -27,9 +27,9 @@ class PaginationParams
         return $this->config['name'];
     }
 
-    public function page(): ?int
+    public function page(int $default = null): ?int
     {
-        return (int) $this->request->input("{$this->config['name']}.{$this->config['number']}");
+        return (int) $this->request->input("{$this->config['name']}.{$this->config['number']}", $default);
     }
 
     public function filled(): bool
