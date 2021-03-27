@@ -9,13 +9,9 @@ use Illuminate\Support\Arr;
 
 class QueryParamBag
 {
-    private $params = [];
-
-    /** @var Request */
-    private $request;
-
-    /** @var string */
-    private $field;
+    private array $params = [];
+    private Request $request;
+    private string $field;
 
     public function __construct(Request $request, string $field)
     {
@@ -47,12 +43,12 @@ class QueryParamBag
         return Arr::get($this->params, $field, $default);
     }
 
-    public function isEmpty($field)
+    public function isEmpty($field): bool
     {
         return empty($this->get($field));
     }
 
-    public function each($callback)
+    public function each($callback): void
     {
         collect($this->params)->each($callback);
     }

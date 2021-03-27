@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 class PaginationParams
 {
     private $config;
-
-    /** @var Request */
-    private $request;
+    private Request $request;
 
     public function __construct(Request $request)
     {

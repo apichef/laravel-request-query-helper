@@ -25,7 +25,98 @@ $ php artisan vendor:publish --provider="ApiChef\RequestQueryHelper\RequestQuery
 
 ## Usage
 
-- soon
+#### Configuration
+
+Default configuration is follows the [{json:api} specification](https://jsonapi.org/format/#fetching).
+
+```php
+return [
+    /* Configuration for inclusion of related resources */
+    'include' => [
+        'name' => 'include',
+    ],
+
+    /* Configuration for filtering resource collections */
+    'filter' => [
+        'name' => 'filter',
+    ],
+
+    /* Configuration for sorting resource collections */
+    'sort' => [
+        'name' => 'sort',
+        'param_separator' => ':',
+    ],
+
+    /* Configuration for sparse field-sets */
+    'fields' => [
+        'name' => 'fields',
+    ],
+
+    /* Configuration for pagination */
+    'pagination' => [
+        'name' => 'page',
+        'number' => 'number',
+        'size' => 'size',
+    ],
+];
+```
+
+## Includes and Filters
+
+This package adds `filters` and  `includes` methods to the query object. Both methods returns `QueryParamBag`, which is capable of parsing array-based and string-based request query strings.
+
+Eg:
+```
+GET '/posts?include=comments:limit(5):sort(created_at|desc),author'
+```
+or
+```
+GET '/posts?include[comments][limit]=5&include[comments][sort]=created_at|desc&include[author]'
+```
+
+Following examples are based on above request.
+
+```php
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    public function show(Request $request)
+    {
+        $params = $request->includes();
+        
+        // has
+        
+        $params->has('comments'); // true
+        $params->has('comments.limit'); // true
+        $params->has('comments.sort'); // true
+        $params->has('comments.foo'); // false
+        $params->has('author'); // true
+        
+        // get
+        
+        $params->get('comments.limit'); // [5]
+        $params->get('comments.sort'); // ['created_at', 'desc']
+        
+        // isEmpty
+        
+        $params->isEmpty('comments'); // false
+        $params->isEmpty('author'); // true
+    }
+}
+
+## Sorts
+
+// todo
+
+## Fields
+
+// todo
+
+## Pagination
+
+// todo
+```
 
 ## Change log
 

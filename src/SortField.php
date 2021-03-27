@@ -9,14 +9,9 @@ class SortField
     const DIRECTION_ASCENDING = 'asc';
     const DIRECTION_DESCENDING = 'desc';
 
-    /** @var string */
-    private $field;
-
-    /** @var string */
-    private $direction;
-
-    /** @var string|null */
-    private $params;
+    private string $field;
+    private string $direction;
+    private ?string $params;
 
     public function __construct(string $field, string $direction, string $params = null)
     {

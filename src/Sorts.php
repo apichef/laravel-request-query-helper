@@ -11,8 +11,7 @@ use Illuminate\Support\Str;
 
 class Sorts
 {
-    /** @var Collection */
-    private $fields;
+    private Collection $fields;
 
     public function __construct(Request $request)
     {
@@ -40,7 +39,7 @@ class Sorts
         return $this->fields->isNotEmpty();
     }
 
-    public function each(callable $callback)
+    public function each(callable $callback): void
     {
         $this->fields->each($callback);
     }

@@ -9,8 +9,7 @@ use Illuminate\Support\Collection;
 
 class Fields
 {
-    /** @var Collection */
-    private $fields;
+    private Collection $fields;
 
     public function __construct(Request $request)
     {
@@ -20,7 +19,7 @@ class Fields
             });
     }
 
-    public function has($resourceName)
+    public function has($resourceName): bool
     {
         return $this->fields->has($resourceName);
     }
