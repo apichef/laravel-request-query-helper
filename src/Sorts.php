@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace ApiChef\RequestQueryHelper;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -13,13 +11,14 @@ class Sorts
 {
     private Collection $fields;
 
-    public function __construct(Request $request)
+    public function __construct(string $sorts = null)
     {
-        $paramName = config('request-query-helper.sort.name');
-        $paramSeparator = config('request-query-helper.sort.param_separator');
-        $params = $request->filled($paramName) ? explode(',', $request->get($paramName)) : [];
+        $this->fields = Collection::make();
+        $sorts = (new QueryParamBag($sorts))->getParams();
+        $fields = array_keys($sorts);
 
-        $this->fields = collect($params)->map(function ($field) use ($paramSeparator) {
+        collect($fields)->each(function (string $field) use ($sorts) {
+            $params = $sorts[$field];
             $direction = SortField::DIRECTION_ASCENDING;
 
             if (Str::startsWith($field, '-')) {
@@ -27,20 +26,12 @@ class Sorts
                 $field = Str::after($field, '-');
             }
 
-            $parts = explode($paramSeparator, $field);
-            $field = $parts[0];
-
-            return new SortField($field, $direction, Arr::get($parts, 1));
+            $this->fields->push(new SortField($field, $direction, $params));
         });
     }
 
-    public function filled(): bool
+    public function getFields(): Collection
     {
-        return $this->fields->isNotEmpty();
-    }
-
-    public function each(callable $callback): void
-    {
-        $this->fields->each($callback);
+        return $this->fields;
     }
 }

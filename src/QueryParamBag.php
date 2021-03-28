@@ -4,28 +4,25 @@ declare(strict_types=1);
 
 namespace ApiChef\RequestQueryHelper;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class QueryParamBag
 {
     private array $params = [];
-    private Request $request;
-    private string $field;
 
-    public function __construct(Request $request, string $field)
+    /**
+     * @param null|string|array $field
+     */
+    public function __construct($field = null)
     {
-        $this->request = $request;
-        $this->field = $field;
-
-        if ($request->filled($field)) {
-            $this->prepareParams($request->get($field));
+        if ($field !== null) {
+            $this->prepareParams($field);
         }
     }
 
     public function filled(): bool
     {
-        return $this->request->filled($this->field);
+        return ! empty($this->params);
     }
 
     public function has($field): bool
@@ -101,5 +98,10 @@ class QueryParamBag
         return collect($params)->mapWithKeys(function ($param, $name) {
             return [$name => explode('|', $param)];
         })->all();
+    }
+
+    public function getParams(): array
+    {
+        return $this->params;
     }
 }

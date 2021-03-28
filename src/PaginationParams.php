@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class PaginationParams
 {
-    private $config;
+    private array $config;
     private Request $request;
 
-    public function __construct(Request $request)
+    public function __construct(array $config, Request $request)
     {
-        $this->config = config('request-query-helper.pagination');
+        $this->config = $config;
         $this->request = $request;
     }
 

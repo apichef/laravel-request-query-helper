@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace ApiChef\RequestQueryHelper;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class Fields
 {
     private Collection $fields;
 
-    public function __construct(Request $request)
+    public function __construct(array $fields)
     {
-        $this->fields = collect($request->get(config('request-query-helper.fields.name'), []))
+        $this->fields = collect($fields)
             ->mapWithKeys(function ($value, $key) {
                 return [$key => explode(',', $value)];
             });

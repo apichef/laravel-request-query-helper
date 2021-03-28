@@ -11,9 +11,9 @@ class SortField
 
     private string $field;
     private string $direction;
-    private ?string $params;
+    private array $params;
 
-    public function __construct(string $field, string $direction, string $params = null)
+    public function __construct(string $field, string $direction, array $params = [])
     {
         $this->field = $field;
         $this->direction = $direction;
@@ -30,7 +30,7 @@ class SortField
         return $this->direction;
     }
 
-    public function getParams(): ?string
+    public function getParams(): array
     {
         return $this->params;
     }

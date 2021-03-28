@@ -28,7 +28,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
             ],
             'sort' => [
                 'name' => 'sort',
-                'param_separator' => '|',
             ],
             'fields' => [
                 'name' => 'fields',

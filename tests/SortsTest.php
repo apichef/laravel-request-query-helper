@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ApiChef\RequestQueryHelper;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class SortsTest extends TestCase
 {
@@ -12,11 +13,12 @@ class SortsTest extends TestCase
     {
         $request = Request::create('/url?sort=-created_at,title');
 
+        /** @var Sorts $sorts */
         $sorts = $request->sorts();
 
         $this->assertInstanceOf(Sorts::class, $sorts);
 
-        $sorts->each(function (SortField $sortField) {
+        $sorts->getFields()->each(function (SortField $sortField) {
             if ($sortField->getField() == 'created_at') {
                 $this->assertEquals('desc', $sortField->getDirection());
             }
@@ -24,30 +26,29 @@ class SortsTest extends TestCase
             if ($sortField->getField() == 'title') {
                 $this->assertEquals('asc', $sortField->getDirection());
             }
+
+            $this->assertEquals([], $sortField->getParams());
         });
     }
 
     public function test_can_pass_additional_parameters()
     {
-        $request = Request::create('/url?sort=-created_at|foo:bar');
+        $request = Request::create('/url?sort=-likes:between(2020-02-02|2021-01-21)');
 
         $sorts = $request->sorts();
 
         $this->assertInstanceOf(Sorts::class, $sorts);
 
-        $sorts->each(function (SortField $sortField) {
-            $this->assertEquals('created_at', $sortField->getField());
+        $sorts->getFields()->each(function (SortField $sortField) {
+            $this->assertEquals('likes', $sortField->getField());
             $this->assertEquals('desc', $sortField->getDirection());
-            $this->assertEquals('foo:bar', $sortField->getParams());
+            $this->assertEquals(['between' => ['2020-02-02', '2021-01-21']], $sortField->getParams());
         });
     }
 
-    public function test_filled()
+    public function test_getFields()
     {
         $request = Request::create('/url');
-        $this->assertFalse($request->sorts()->filled());
-
-        $request = Request::create('/url?sort=-created_at');
-        $this->assertTrue($request->sorts()->filled());
+        $this->assertInstanceOf(Collection::class, $request->sorts()->getFields());
     }
 }

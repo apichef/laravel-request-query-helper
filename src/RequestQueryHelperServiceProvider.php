@@ -14,23 +14,23 @@ class RequestQueryHelperServiceProvider extends ServiceProvider
         ], 'config');
 
         Request::macro('filters', function () {
-            return new QueryParamBag($this, config('request-query-helper.filter.name'));
+            return new QueryParamBag($this->get(config('request-query-helper.filter.name')));
         });
 
         Request::macro('includes', function () {
-            return new QueryParamBag($this, config('request-query-helper.include.name'));
+            return new QueryParamBag($this->get(config('request-query-helper.include.name')));
         });
 
         Request::macro('fields', function () {
-            return new Fields($this);
+            return new Fields($this->get(config('request-query-helper.fields.name'), []));
         });
 
         Request::macro('sorts', function () {
-            return new Sorts($this);
+            return new Sorts($this->get(config('request-query-helper.sort.name')));
         });
 
         Request::macro('paginationParams', function () {
-            return new PaginationParams($this);
+            return new PaginationParams(config('request-query-helper.pagination'), $this);
         });
     }
 

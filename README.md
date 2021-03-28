@@ -44,7 +44,6 @@ return [
     /* Configuration for sorting resource collections */
     'sort' => [
         'name' => 'sort',
-        'param_separator' => ':',
     ],
 
     /* Configuration for sparse field-sets */
