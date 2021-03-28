@@ -49,7 +49,7 @@ class SortsTest extends TestCase
         $sorts = $request->sorts();
 
         /** @var SortField $sortField */
-        $sortField =  $sorts->getFields()->first();
+        $sortField = $sorts->getFields()->first();
 
         $this->assertInstanceOf(Sorts::class, $sorts);
 
