@@ -11,7 +11,10 @@ class Sorts
 {
     private Collection $fields;
 
-    public function __construct(string $sorts = null)
+    /**
+     * @param null|string|array $sorts
+     */
+    public function __construct($sorts = null)
     {
         $this->fields = Collection::make();
         $sorts = (new QueryParamBag($sorts))->getParams();
