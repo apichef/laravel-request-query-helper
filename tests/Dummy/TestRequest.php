@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ApiChef\RequestQueryHelper\Dummy;
 
@@ -17,7 +19,7 @@ class TestRequest extends FormRequest
     public function rules()
     {
         return [
-            'sort.likes.between.*' => 'date_format:Y-m-d'
+            'sort.likes.between.*' => 'date_format:Y-m-d',
         ];
     }
 

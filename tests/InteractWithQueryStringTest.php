@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ApiChef\RequestQueryHelper;
 
@@ -18,9 +20,9 @@ class InteractWithQueryStringTest extends TestCase
             ->assertJsonFragment([
                 'errors' => [
                     'sort.likes.between.1' => [
-                        'The sort.likes.between.1 does not match the format Y-m-d.'
-                    ]
-                ]
+                        'The sort.likes.between.1 does not match the format Y-m-d.',
+                    ],
+                ],
             ]);
     }
 
